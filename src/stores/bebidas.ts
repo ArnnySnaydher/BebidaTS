@@ -1,10 +1,19 @@
-import { ref } from 'vue'
-import {defineStore} from  'pinia'
+import { ref, onMounted } from 'vue'
+import { defineStore } from 'pinia'
+import axios from 'axios'
 
-export const useBebidasStore = defineStore('bebidas',()=>{
-    const categorias = ref([])
+export const useBebidasStore = defineStore('bebidas', () => {
+  const categorias = ref([])
 
-    return {
-        categorias
-    }
+  onMounted(async () => {
+    const {
+      data: { drinks }
+    } = await axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+
+    categorias.value = drinks
+  })
+
+  return {
+    categorias
+  }
 })

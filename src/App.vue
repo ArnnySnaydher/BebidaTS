@@ -1,18 +1,12 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
-import Header from './components/HeaderComponent.vue';
+import { RouterView } from 'vue-router'
+import Header from './components/HeaderComponent.vue'
 </script>
 
 <template>
+  <Header> </Header>
 
-
-  <Header>
-
-  </Header>
-
-  <main class="container mx-auto mt-10 ">
+  <main class="container mx-auto mt-10">
     <RouterView></RouterView>
   </main>
-
-  
 </template>
