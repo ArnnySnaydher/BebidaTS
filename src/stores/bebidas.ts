@@ -1,9 +1,13 @@
-import { ref, onMounted } from 'vue'
+import { ref, onMounted ,reactive } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
 export const useBebidasStore = defineStore('bebidas', () => {
   const categorias = ref([])
+  const busqueda = reactive({
+    nombre:'',
+    categoria:''
+  })
 
   onMounted(async () => {
     const {
@@ -13,7 +17,13 @@ export const useBebidasStore = defineStore('bebidas', () => {
     categorias.value = drinks
   })
 
+  function obtenerRecetas() {
+    console.log('consultando API')
+  }
+
   return {
-    categorias
+    categorias,
+    busqueda,
+    obtenerRecetas
   }
 })
