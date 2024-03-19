@@ -1,17 +1,34 @@
 import { defineStore } from "pinia";
 import { useBebidasStore } from "./bebidas";
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 
-export const useFavoritosStore = defineStore('favoritos',()=>{
+export const useFavoritosStore = defineStore('favoritos', () => {
 
     const bebidas = useBebidasStore()
     const favoritos = ref([])
-    const handleClickFavorito = () =>{
+
+    onMounted(()=>{
+        favoritos.value = JSON.parse(localStorage.getItem('favoritos')) ?? []
+    })
+    watch(favoritos, () => { 
+        sincronizarLocalStorage()
+    },{
+        deep:true
+    }
+    
+    )
+    const sincronizarLocalStorage = () => {
+        localStorage.setItem("favoritos", JSON.stringify(favoritos.value))
+    }
+
+    const handleClickFavorito = () => {
         favoritos.value.push(bebidas.receta)
     }
 
-    return{
+
+    return {
         favoritos,
-        handleClickFavorito
+        handleClickFavorito,
+        sincronizarLocalStorage
     }
 })
