@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Header from './components/HeaderComponent.vue'
+import Header from '@/components/HeaderComponent.vue'
+import Modal from '@/components/ModalComponent.vue';
 </script>
 
 <template>
@@ -9,4 +10,5 @@ import Header from './components/HeaderComponent.vue'
   <main class="container mx-auto mt-10">
     <RouterView></RouterView>
   </main>
+  <Modal></Modal>
 </template>
