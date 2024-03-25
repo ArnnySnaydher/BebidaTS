@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import Header from '@/components/HeaderComponent.vue'
-import Modal from '@/components/ModalComponent.vue';
+import Modal from '@/components/ModalComponent.vue'
 </script>
 
 <template>

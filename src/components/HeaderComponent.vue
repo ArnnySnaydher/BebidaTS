@@ -7,8 +7,8 @@ const route = useRoute()
 const paginaInicio = computed(() => route.name === 'inicio')
 const store = useBebidasStore()
 
-const handleSubmit = () =>{
-    store.obtenerRecetas()
+const handleSubmit = () => {
+  store.obtenerRecetas()
 }
 </script>
 <template>
@@ -23,14 +23,14 @@ const handleSubmit = () =>{
         <nav class="flex gap-4 text-white">
           <router-link
             :to="{ name: 'inicio' }"
-            class=" uppercase font-bold"
+            class="uppercase font-bold"
             active-class="text-orange-500"
             >Inicio</router-link
           >
 
           <router-link
             :to="{ name: 'favoritos' }"
-            class=" uppercase font-bold"
+            class="uppercase font-bold"
             active-class="text-orange-500"
             >Favoritos</router-link
           >
@@ -59,7 +59,11 @@ const handleSubmit = () =>{
           <label class="block text-white uppercase font-extrabold text-lg" for="categoria"
             >Categoria</label
           >
-          <select id="categoria" class="p-3 w-full rounded-lg focus:outline-none" v-model="store.busqueda.categoria">
+          <select
+            id="categoria"
+            class="p-3 w-full rounded-lg focus:outline-none"
+            v-model="store.busqueda.categoria"
+          >
             <option value="">-- Seleccione --</option>
             <option
               v-for="categoria in store.categorias"
