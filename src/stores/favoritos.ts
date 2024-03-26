@@ -32,15 +32,17 @@ export const useFavoritosStore = defineStore('favoritos', () => {
     }
     function eliminarFavorito() {
         favoritos.value = favoritos.value.filter(favorito => favorito.idDrink !== bebidas.receta.idDrink)
+
+        notificaciones.mostrar = true
+        notificaciones.texto ='Eliminado de Favoritos'
+
     }
     function agregarFavorito() {
         favoritos.value.push(bebidas.receta)
+
         notificaciones.mostrar = true
         notificaciones.texto ='Se agrego a favoritos'
 
-        setTimeout(()=>{
-            notificaciones.$reset()
-        },3000)
     }
 
     function handleClickFavorito() {
